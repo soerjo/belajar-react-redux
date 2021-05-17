@@ -1,24 +1,16 @@
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
+import Counter from "./components/Counter";
 import "./App.css";
-import {
-  decrement,
-  increment,
-  incrementByAmount,
-  resetValue,
-} from "./redux/counterSlice";
 
-function App() {
-  const { count } = useSelector((state) => state.counter);
-  const dispatch = useDispatch();
+const App = () => {
+  const [count, setCount] = React.useState(0);
+
   return (
     <div className="App">
-      <h2>Count: {count}</h2>
-      <button onClick={() => dispatch(decrement())}>Kurang</button>
-      <button onClick={() => dispatch(increment())}>Tambah</button>
-      <button onClick={() => dispatch(incrementByAmount(5))}>Tambah 5</button>
-      <button onClick={() => dispatch(resetValue())}>Reset Value 0</button>
+      <h2>Counter Outer: {count}</h2>
+      <Counter counter={count} setCounter={setCount} />
     </div>
   );
-}
+};
 
 export default App;
